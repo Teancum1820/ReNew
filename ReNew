@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const BaptismalCovenantPage = ({ onBack }) => {
   const handleLinkOpen = (url) => {
@@ -565,6 +565,126 @@ const LawOfConsecrationPage = ({ onBack }) => {
   );
 };
 
+const BingoPage = ({ onBack }) => {
+  const words = [
+    'Testimony', 'Atonement', 'Missionary', 'Family', 'Prayer', 'Scriptures', 'Faith', 'Service', 'Holy Ghost', 'Prophet', 'Temple', 'Charity', 'Repentance', 'Covenant', 'Eternal Life', 'Baptism', 'Sacrament', 'Love', 'Pioneer', 'Gratitude', 'Forgiveness', 'Heavenly Father', 'Jesus Christ', 'Gospel', 'Zion', 'Tithing', 'Fasting', 'Revelation', 'Priesthood', 'Agency', 'Obedience', 'Resurrection', 'Family History', 'Sabbath Day', 'Joy', 'Peace', 'Hope', 'Kindness', 'Compassion', 'Endurance', 'General Conference', 'Apostles', 'Restoration', 'Joseph Smith', 'Book of Mormon', 'Doctrine and Covenants', 'Pearl of Great Price', 'Hymns', 'Reverence', 'Modesty', 'Word of Wisdom', 'Eternal Marriage', 'Sealing', 'Patriarchal Blessing', 'Fast Offering', 'Home Teaching', 'Visiting Teaching', 'Relief Society', 'Young Men', 'Young Women', 'Primary', 'Sunday School', 'Seminary', 'Institute', 'Family Home Evening', 'Ministering', 'Christlike', 'Humility', 'Meekness', 'Sacrifice', 'Spiritual Gifts', 'Unity', 'Fellowship', 'Testify', 'Conversion', 'Redeemer', 'Savior', 'Light of Christ', 'Plan of Salvation', 'Pre-mortal Life', 'Mortality', 'Spirit World', 'Second Coming', 'Millennium', 'Judgment', 'Kingdoms of Glory', 'Celestial Kingdom', 'Terrestrial Kingdom', 'Telestial Kingdom', 'Exaltation', 'Family Proclamation', 'Articles of Faith', 'Faith in Every Footstep', 'Come, Follow Me', 'Strength of Youth', 'Ensign', 'Liahona', 'New Era'
+  ];
+
+  const [gridWords, setGridWords] = useState([]);
+  const [markedCells, setMarkedCells] = useState(new Set([12])); // Center cell is free
+  const [isBingo, setIsBingo] = useState(false);
+
+  // Function to shuffle an array
+  const shuffleArray = (array) => {
+    let currentIndex = array.length, randomIndex;
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+    return array;
+  };
+
+  useEffect(() => {
+    const uniqueWords = [...new Set(words)];
+    const shuffled = shuffleArray(uniqueWords);
+    setGridWords(shuffled.slice(0, 24));
+  }, []);
+
+  const handleCellClick = (index) => {
+    if (isBingo || index === 12) return;
+    const newMarkedCells = new Set(markedCells);
+    if (newMarkedCells.has(index)) {
+      newMarkedCells.delete(index);
+    } else {
+      newMarkedCells.add(index);
+    }
+    setMarkedCells(newMarkedCells);
+    checkBingo(newMarkedCells);
+  };
+  
+  const checkBingo = (currentMarkedCells) => {
+    const winningCombos = [
+      // Rows
+      [0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15, 16, 17, 18, 19], [20, 21, 22, 23, 24],
+      // Columns
+      [0, 5, 10, 15, 20], [1, 6, 11, 16, 21], [2, 7, 12, 17, 22], [3, 8, 13, 18, 23], [4, 9, 14, 19, 24],
+      // Diagonals
+      [0, 6, 12, 18, 24], [4, 8, 12, 16, 20]
+    ];
+
+    for (const combo of winningCombos) {
+      if (combo.every(cell => currentMarkedCells.has(cell))) {
+        setIsBingo(true);
+        return;
+      }
+    }
+    setIsBingo(false);
+  };
+
+  const resetGame = () => {
+      const uniqueWords = [...new Set(words)];
+      const shuffled = shuffleArray(uniqueWords);
+      setGridWords(shuffled.slice(0, 24));
+      setMarkedCells(new Set([12]));
+      setIsBingo(false);
+  };
+
+  const fullGrid = [...gridWords.slice(0, 12), "FREE", ...gridWords.slice(12, 24)];
+
+  return (
+    <div className="max-w-4xl mx-auto text-center">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold text-gray-800 mb-2">Sacrament Meeting Bingo</h1>
+      </header>
+
+       <div className="mb-8 flex justify-center space-x-4">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+             <button
+              onClick={resetGame}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h5m-5-2.222a8.955 8.955 0 011.64-5.222m-1.64 5.222h-.001M3.05 13.05a9 9 0 101.95-9.95M12 5.25v6.5l4.5 2.5" />
+                 <path strokeLinecap="round" strokeLinejoin="round" d="M20 11a8.1 8.1 0 00-15.55 0M11.55 20a8.1 8.1 0 000-15.55" />
+                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+             New Game
+            </button>
+        </div>
+
+      {isBingo && (
+        <div className="mb-4 text-3xl font-bold text-green-600 animate-bounce">
+          BINGO!
+        </div>
+      )}
+
+      <div className="grid grid-cols-5 gap-2 bg-white rounded-lg shadow-lg p-4 max-w-lg mx-auto aspect-square">
+        {fullGrid.map((word, index) => (
+          <div
+            key={index}
+            onClick={() => handleCellClick(index)}
+            className={`flex items-center justify-center p-1 rounded-md text-center cursor-pointer transition duration-200 aspect-square ${
+              markedCells.has(index)
+                ? 'bg-teal-500 text-white transform scale-105'
+                : 'bg-gray-100 hover:bg-teal-100'
+            } ${word === "FREE" ? 'font-extrabold text-lg' : 'text-xs md:text-sm'}`}
+          >
+            {word}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 
 export default function SacramentApp() {
@@ -704,7 +824,7 @@ export default function SacramentApp() {
         </div>
 
         {/* Section 3: Talks & Speakers */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Talks & Speakers</h2>
           <p className="text-gray-700 mb-6 leading-relaxed">
             Speakers bear testimony of Jesus Christ and teach His gospel using the scriptures (see Doctrine and Covenants 42:12; 52:9). Messages should build faith and be consistent with the sacred nature of the sacrament. (29.2.1.4 General Handbook)
@@ -734,6 +854,45 @@ export default function SacramentApp() {
           </div>
         </div>
 
+        {/* Section 4: Activities */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Activities</h2>
+          <p className="text-gray-700 mb-6 leading-relaxed">
+            Engage with gospel-centered activities to enhance your Sabbath day worship.
+          </p>
+          <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+            <button
+              onClick={() => handleLinkOpen('https://comefollowmedle.com')}
+              className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              Come Follow Medle
+            </button>
+            <button
+              onClick={() => setCurrentPage('bingo')}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              Sacrament Meeting Bingo
+            </button>
+          </div>
+        </div>
+
+        {/* How to Get the Most out of Sacrament Meeting */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">How to Get the Most out of Sacrament Meeting</h2>
+          <p className="text-gray-700 mb-6 leading-relaxed italic">
+            Someone asked President Spencer W. Kimball (1895–1985), “What do you do when you find yourself in a boring sacrament meeting?” His answer was a little surprising: “I don’t know. I’ve never been in one.”
+          </p>
+          <div className="space-y-4 text-left">
+            <p><strong>Prepare Spiritually:</strong> Before attending, take some time to pray and read the scriptures. This can help you arrive with a heart ready to receive inspiration.</p>
+            <p><strong>Set Intentions:</strong> Go with the intention to worship, renew your covenants, and learn something new. Having a purpose can make the experience more fulfilling.</p>
+            <p><strong>Engage Actively:</strong> Listen actively to the talks and music. Take notes on thoughts or impressions you receive, even if they aren't directly related to the speaker's message.</p>
+            <p><strong>Pray for the Speakers:</strong> Pray for those who are speaking. This can help you feel more connected to their messages and open to the Spirit.</p>
+            <p><strong>Reflect on the Sacrament:</strong> Use the time during the Sacrament to reflect on the Savior's Atonement and your personal relationship with Him.</p>
+            <p><strong>Look for Personal Application:</strong> Consider how the messages shared can apply to your life. Ask yourself what changes you can make to become a better disciple of Christ.</p>
+            <p><strong>Express Gratitude:</strong> After the meeting, take a moment to express gratitude for the opportunity to worship and learn. This can help reinforce the positive aspects of the experience.</p>
+          </div>
+        </div>
+
 
         <footer className="text-center mt-12 text-gray-600">
           <p>© 2025 <a href="https://calebday.com" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 underline">Caleb Day</a></p>
@@ -754,8 +913,8 @@ export default function SacramentApp() {
       {currentPage === 'gospel' && <LawOfTheGospelPage onBack={() => setCurrentPage('main')} />}
       {currentPage === 'chastity' && <LawOfChastityPage onBack={() => setCurrentPage('main')} />}
       {currentPage === 'consecration' && <LawOfConsecrationPage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'bingo' && <BingoPage onBack={() => setCurrentPage('main')} />}
     </div>
   );
 }
-
 
