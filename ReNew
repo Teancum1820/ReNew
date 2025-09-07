@@ -1,26 +1,593 @@
 import React, { useState } from 'react';
 
+const BaptismalCovenantPage = ({ onBack }) => {
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Baptismal Covenant</h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">The baptismal covenant is a sacred promise where you commit to take upon yourself the name of Jesus Christ, always remember Him, keep His commandments, and serve Him, in exchange for the companionship of the Holy Ghost.</p>
+        </header>
+
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+        
+        {/* Church Website Articles */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Church Website Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/youth/learn/yw/ordinances-covenants/baptism?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    What covenants did I make at baptism?
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/doctrines-of-the-gospel-student-manual/15-baptism?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Covenant of Baptism
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/gospel-topics/baptism?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Baptismal Covenant
+                </button>
+            </div>
+        </div>
+
+        {/* Come Follow Me Lessons */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Come Follow Me Lessons</h3>
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-book-of-mormon-2024/21?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Mosiah 18–24: We Have Entered into a Covenant with Him
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-doctrine-and-covenants-2025/26-doctrine-and-covenants-67-70?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Doctrine and Covenants 67–70: Worth the Riches of the Whole Earth
+                </button>
+            </div>
+        </div>
+
+        {/* General Conference Talks */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">General Conference Talks</h3>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1990/10/covenants?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Covenants
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2000/10/the-covenant-of-baptism-to-be-in-the-kingdom-and-of-the-kingdom?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Covenant of Baptism: To Be in the Kingdom and of the Kingdom
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+};
+
+
+const ConfirmationPage = ({ onBack }) => {
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Confirmation</h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">Confirmation is the ordinance following baptism where individuals are confirmed members of the Church and receive the gift of the Holy Ghost to guide and comfort them throughout their lives.</p>
+        </header>
+
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+        
+        {/* Church Website Articles */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Church Website Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/temples/what-is-proxy-baptism')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    About Proxy Baptism and Confirmation
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/scriptures/bd/confirmation?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Confirmation
+                </button>
+            </div>
+        </div>
+
+        {/* Come Follow Me Lessons */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Come Follow Me Lessons</h3>
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-doctrine-and-covenants-2025/13-doctrine-and-covenants-27-28?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Doctrine and Covenants 27–28: All Things Must Be Done in Order
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-new-testament-2023/07?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    John 2-4
+                </button>
+            </div>
+        </div>
+
+        {/* General Conference Talks */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">General Conference Talks</h3>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2015/10/the-holy-ghost-as-your-companion?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Holy Ghost as Your Companion
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2015/10/choose-the-light?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Choose the Light
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+};
+
+const SacramentCovenantPage = ({ onBack }) => {
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Sacrament Covenant</h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">The sacrament covenant is a sacred promise where we renew our baptismal covenants by partaking of the bread and water, symbolizing our commitment to remember Jesus Christ, take His name upon us, and keep His commandments, in return for the promise of His Spirit to be with us.</p>
+        </header>
+
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+        
+        {/* Church Website Articles */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Church Website Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/ensign/2010/06/renewing-covenants-through-the-sacrament?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Renewing Covenants through the Sacrament
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/liahona/2012/07/understanding-our-covenants-with-god?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Understanding Our Covenants with God
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/gospel-topics/sacrament?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Sacrament
+                </button>
+            </div>
+        </div>
+
+        {/* Come Follow Me Lessons */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Come Follow Me Lessons</h3>
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-doctrine-and-covenants-2021/12?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Doctrine and Covenants 27–28: All Things Must Be Done in Order
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-new-testament-2023/28?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Acts 1–5
+                </button>
+            </div>
+        </div>
+
+        {/* General Conference Talks */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">General Conference Talks</h3>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2016/04/always-remember-him?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Always Remember Him
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2016/10/the-doctrine-of-christ?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Doctrine of Christ
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+};
+
+const LawOfObediencePage = ({ onBack }) => {
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Law of Obedience</h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">The Law of Obedience is a fundamental principle in the gospel, emphasizing the importance of following God's commandments. It is considered the first law of heaven, and through obedience, individuals receive blessings and protection from evil. Obedience to God's laws is seen as a pathway to liberty, eternal happiness, and spiritual growth.</p>
+        </header>
+
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+        
+        {/* Church Website Articles */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Church Website Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/doctrines-of-the-gospel-student-manual/17-obedience?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Chapter 17: Obedience, a Law of Heaven
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2013/04/obedience-to-law-is-liberty?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Obedience to Law Is Liberty
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/ensign/2008/01/obedience-the-first-law-of-heaven?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Obedience: The First Law of Heaven
+                </button>
+            </div>
+        </div>
+
+        {/* Come Follow Me Lessons */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Come Follow Me Lessons</h3>
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-old-testament-2022/36?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Proverbs 1–4; 15–16; 22; 31; Ecclesiastes 1–3; 11–12
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-new-testament-2023/34?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Romans 7–16
+                </button>
+            </div>
+        </div>
+
+        {/* General Conference Talks */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">General Conference Talks</h3>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1973/10/obedience?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Obedience
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1982/10/the-seven-christs?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Seven Christs
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2013/04/obedience-to-law-is-liberty?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Obedience to Law Is Liberty
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+};
+
+const LawOfSacrificePage = ({ onBack }) => {
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Law of Sacrifice</h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">The Law of Sacrifice is a principle that involves giving up something valuable for the sake of something of greater spiritual significance. It is designed to test and prove us, helping us come closer to Christ. Historically, it included animal sacrifices, but today it involves offering a broken heart and a contrite spirit, supporting the Lord's work, and repenting sincerely.</p>
+        </header>
+
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+        
+        {/* Church Website Articles */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Church Website Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/liahona/2002/03/the-law-of-sacrifice?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Law of Sacrifice
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/ensign/2000/04/living-the-law-of-sacrifice?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Living the Law of Sacrifice
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/gospel-principles/chapter-26-sacrifice?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Chapter 26: Sacrifice
+                </button>
+            </div>
+        </div>
+
+        {/* Come Follow Me Lessons */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Come Follow Me Lessons</h3>
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-new-testament-2023/08?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Matthew 5; Luke 6
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-doctrine-and-covenants-2025/42-doctrine-and-covenants-115-120?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Doctrine and Covenants 115–120
+                </button>
+            </div>
+        </div>
+
+        {/* General Conference Talks */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">General Conference Talks</h3>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2017/10/do-we-trust-him-hard-is-good?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Do We Trust Him? Hard Is Good
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1971/04/the-message-of-the-restoration?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Message of the Restoration
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1975/04/obedience-consecration-and-sacrifice?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Obedience, Consecration, and Sacrifice
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+};
+
+const LawOfTheGospelPage = ({ onBack }) => {
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Law of the Gospel</h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">The Law of the Gospel encompasses all the teachings, principles, and ordinances necessary for our exaltation. It involves exercising faith in Jesus Christ, making and honoring covenants with God, repenting daily, and striving to love God and our neighbors. This law guides us to live a Christlike life and endure to the end.</p>
+        </header>
+
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+        
+        {/* Church Website Articles */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Church Website Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/temples/what-is-temple-endowment')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    About the Temple Endowment
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1977/10/the-safety-of-the-gospel-law?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Safety of the Gospel Law
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/gospel-topics/gospel?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Gospel
+                </button>
+            </div>
+        </div>
+
+        {/* Come Follow Me Lessons */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Come Follow Me Lessons</h3>
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-book-of-mormon-2024/40?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    3 Nephi 12–16
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-home-and-church-doctrine-and-covenants-2025/22-doctrine-and-covenants-51-57?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Doctrine and Covenants 51–57
+                </button>
+            </div>
+        </div>
+
+        {/* General Conference Talks */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">General Conference Talks</h3>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1977/10/the-safety-of-the-gospel-law?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Safety of the Gospel Law
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2015/04/why-marriage-why-family?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Why Marriage, Why Family
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1971/04/out-of-the-darkness?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Out of the Darkness
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+};
+
+const LawOfChastityPage = ({ onBack }) => {
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Law of Chastity</h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">The Law of Chastity is a commandment from God that requires abstinence from sexual relations before marriage and complete fidelity within marriage. It applies to both men and women and includes maintaining purity in thoughts, words, and actions. This law is essential for spiritual protection, peace, and happiness.</p>
+        </header>
+
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+        
+        {/* Church Website Articles */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Church Website Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/chastity/what-is-the-law-of-chastity?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    What Is the Law of Chastity?
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/gospel-topics/chastity?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Chastity
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/gospel-principles/chapter-39-the-law-of-chastity?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Chapter 39: The Law of Chastity
+                </button>
+            </div>
+        </div>
+
+        {/* Come Follow Me Lessons */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Come Follow Me Lessons</h3>
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-doctrine-and-covenants-2021/24?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Doctrine and Covenants 63
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-old-testament-2022/11?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Genesis 37–41
+                </button>
+            </div>
+        </div>
+
+        {/* General Conference Talks */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">General Conference Talks</h3>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2017/10/value-beyond-measure?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Value beyond Measure
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2019/10/35oaks?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Two Great Commandments
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2019/10/14christofferson?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    The Joy of the Saints
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+};
+
+const LawOfConsecrationPage = ({ onBack }) => {
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+        <header className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">Law of Consecration</h1>
+            <p className="text-gray-600 max-w-3xl mx-auto">The Law of Consecration is a divine principle where individuals dedicate their time, talents, and material resources to the service of God and the building up of His kingdom on earth. It involves a commitment to use one's resources for the benefit of others and the Church, reflecting a willingness to sacrifice personal desires for the greater good.</p>
+        </header>
+
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+        
+        {/* Church Website Articles */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Church Website Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/ftsoy/2021/04/questions-and-answers/15_what-is-the-law-of-consecration?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    What is the law of consecration? How does it affect me?
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/doctrine-and-covenants-student-manual/enrichment-l-the-law-of-consecration-and-stewardship?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Enrichment L: The Law of Consecration and Stewardship
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/doctrine-and-covenants-and-church-history-gospel-doctrine-teachers-manual/lesson-14-the-law-of-consecration?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Lesson 14: The Law of Consecration
+                </button>
+            </div>
+        </div>
+
+        {/* Come Follow Me Lessons */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Come Follow Me Lessons</h3>
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-doctrine-and-covenants-2021/21?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Doctrine and Covenants 51–57
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/come-follow-me-for-individuals-and-families-doctrine-and-covenants-2021/17?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Doctrine and Covenants 41–44
+                </button>
+            </div>
+        </div>
+
+        {/* General Conference Talks */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">General Conference Talks</h3>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1973/10/church-welfare-some-fundamentals?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Church Welfare—Some Fundamentals
+                </button>
+                <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/1975/04/obedience-consecration-and-sacrifice?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Obedience, Consecration, and Sacrifice
+                </button>
+                 <button onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/2010/10/reflections-on-a-consecrated-life?lang=eng')} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg text-left">
+                    Reflections on a Consecrated Life
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+};
+
+
+
 export default function SacramentApp() {
   const [speakerTopic, setSpeakerTopic] = useState('');
+  const [currentPage, setCurrentPage] = useState('main');
 
-  const handleGospelStudyGuide = () => {
-    window.open('https://www.churchofjesuschrist.org/study/manual/gospel-topics/sacrament-study-guide?lang=eng', '_blank');
+  const handleLinkOpen = (url) => {
+    window.open(url, '_blank');
   };
 
   const handleExploreWithAI = () => {
     if (speakerTopic.trim()) {
-      const prompt = `Help me explore this topic shared in a Latter-day Saint Sacrament Talk. Find relevant scriptures and applications. ${speakerTopic}`;
+      const prompt = `I am listening to a Latter-day Saint Sacrament Talk about ${speakerTopic}. Explore this topic. Find relevant scriptures and applications. Help me ponder this topic.`;
       const chatGPTUrl = `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`;
       window.open(chatGPTUrl, '_blank');
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+  const MainPage = () => (
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Sacrament Meeting Companion</h1>
-          <p className="text-gray-600">A guide for spiritual preparation and study</p>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">ReNew</h1>
+          <p className="text-gray-600">Sacrament Meeting Should Never Be Boring</p>
         </header>
 
         {/* Section 1: The Sacrament */}
@@ -29,12 +596,50 @@ export default function SacramentApp() {
           <p className="text-gray-700 mb-6 leading-relaxed">
             Remember Jesus Christ by partaking of the sacrament. In this ordinance, Church members renew their covenant to take upon themselves the Savior's name, to always remember Him, and to keep His commandments. Other purposes include worshipping, building faith and testimony, and conducting ward business. (29.2.1 General Handbook)
           </p>
-          <button
-            onClick={handleGospelStudyGuide}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
-          >
-            Gospel Study Guide
-          </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+            <button
+              onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/gospel-topics/sacrament-study-guide?lang=eng')}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              Gospel Study Guide
+            </button>
+            <button
+              onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/scriptures/sacrament?lang=eng')}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              Sacrament Prayers
+            </button>
+            <button
+              onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/scriptures/tg/sacrament?lang=eng')}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              Topical Guide
+            </button>
+            <button
+              onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/scriptures/gs/sacrament?lang=eng')}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              Guide to the Scriptures
+            </button>
+            <button
+              onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/manual/gospel-topics/sacrament-meeting?lang=eng')}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              Topics and Questions
+            </button>
+            <button
+              onClick={() => handleLinkOpen('https://www.churchofjesuschrist.org/study/general-conference/topics/sacrament?lang=eng')}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              General Conference
+            </button>
+             <button
+              onClick={() => handleLinkOpen('https://speeches.byu.edu/topics/sacrament')}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              BYU Speeches
+            </button>
+          </div>
         </div>
 
         {/* Section 2: Covenants */}
@@ -47,13 +652,19 @@ export default function SacramentApp() {
           {/* Primary Covenants */}
           <div className="mb-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
+              <button
+                onClick={() => setCurrentPage('baptismal')}
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
                 Baptismal Covenant
               </button>
-              <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
+              <button 
+                onClick={() => setCurrentPage('confirmation')}
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
                 Confirmation
               </button>
-              <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
+              <button 
+                onClick={() => setCurrentPage('sacrament')}
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
                 Sacrament Covenant
               </button>
             </div>
@@ -63,19 +674,29 @@ export default function SacramentApp() {
           <div>
             <h3 className="text-xl font-bold text-gray-800 mb-4">Temple Covenants</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <button className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
+              <button 
+                onClick={() => setCurrentPage('obedience')}
+                className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
                 Law of Obedience
               </button>
-              <button className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
+              <button 
+                onClick={() => setCurrentPage('sacrifice')}
+                className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
                 Law of Sacrifice
               </button>
-              <button className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
+              <button 
+                onClick={() => setCurrentPage('gospel')}
+                className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
                 Law of the Gospel
               </button>
-              <button className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
+              <button 
+                onClick={() => setCurrentPage('chastity')}
+                className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
                 Law of Chastity
               </button>
-              <button className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
+              <button 
+                onClick={() => setCurrentPage('consecration')}
+                className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg">
                 Law of Consecration
               </button>
             </div>
@@ -113,11 +734,28 @@ export default function SacramentApp() {
           </div>
         </div>
 
+
         <footer className="text-center mt-12 text-gray-600">
           <p>© 2025 <a href="https://calebday.com" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:text-blue-800 underline">Caleb Day</a></p>
-          <p className="italic mt-1">Renew is not affiliated with The Church of Jesus Christ of Latter-day Saints.</p>
+          <p className="italic mt-1">ReNew is not affiliated with The Church of Jesus Christ of Latter-day Saints.</p>
         </footer>
       </div>
+  );
+
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+      {currentPage === 'main' && <MainPage />}
+      {currentPage === 'baptismal' && <BaptismalCovenantPage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'confirmation' && <ConfirmationPage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'sacrament' && <SacramentCovenantPage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'obedience' && <LawOfObediencePage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'sacrifice' && <LawOfSacrificePage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'gospel' && <LawOfTheGospelPage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'chastity' && <LawOfChastityPage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'consecration' && <LawOfConsecrationPage onBack={() => setCurrentPage('main')} />}
     </div>
   );
 }
+
+
