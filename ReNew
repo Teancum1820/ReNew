@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const BaptismalCovenantPage = ({ onBack }) => {
   const handleLinkOpen = (url) => {
@@ -686,6 +686,316 @@ const BingoPage = ({ onBack }) => {
   );
 };
 
+const JarediteJumperPage = ({ onBack }) => {
+  const canvasRef = useRef(null);
+  const messageRef = useRef(null);
+  const gameContainerRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    const messageEl = messageRef.current;
+    
+    const gameWidth = 800;
+    const gameHeight = 300;
+    canvas.width = gameWidth;
+    canvas.height = gameHeight;
+
+    let score = 0;
+    let highScore = localStorage.getItem('jarediteBargeHighScore') || 0;
+    let gameSpeed = 4;
+    let gravity = 0.5;
+    let isGameOver = false;
+    let isTitleScreen = true;
+    let animationFrameId;
+
+    const barge = {
+        x: 50, y: 250, width: 50, height: 30, dy: 0,
+        jumpStrength: 10, isJumping: false, groundY: 250,
+        draw: function() {
+            ctx.fillStyle = '#a67c52'; 
+            ctx.fillRect(this.x, this.y + 5, this.width, this.height - 10);
+            ctx.fillRect(this.x + 5, this.y, this.width - 10, this.height);
+            ctx.fillStyle = '#856341';
+            for(let i = 0; i < 4; i++) {
+                ctx.fillRect(this.x + 10 + (i * 10), this.y + 8, 5, 3);
+                ctx.fillRect(this.x + 5 + (i * 10), this.y + 18, 5, 3);
+            }
+            ctx.fillStyle = '#856341';
+            ctx.fillRect(this.x - 5, this.y + 10, 5, 5);
+            ctx.fillRect(this.x + this.width, this.y + 10, 5, 5);
+        },
+        jump: function() {
+            if (!this.isJumping) {
+                this.isJumping = true;
+                this.dy = -this.jumpStrength;
+            }
+        },
+        update: function() {
+            if (this.isJumping) {
+                this.y += this.dy;
+                this.dy += gravity;
+            }
+            if (this.y + this.height > this.groundY) {
+                this.y = this.groundY - this.height;
+                this.dy = 0;
+                this.isJumping = false;
+            }
+            this.draw();
+        }
+    };
+
+    let obstacles = [];
+    let obstacleSpawnTimer = 0;
+    let nextObstacleSpawn = Math.random() * 80 + 80;
+
+    function createWaveObstacle() {
+        const waveHeight = Math.random() * 20 + 25;
+        obstacles.push({
+            x: canvas.width, y: 250, width: 40, height: waveHeight,
+            animationFrame: 0, frameCount: 0, animationSpeed: 8, maxFrames: 4,
+            draw: function() {
+                ctx.fillStyle = '#1e3a8a'; 
+                ctx.fillRect(this.x, this.y - this.height, this.width, this.height);
+                ctx.fillStyle = '#3d5a9a';
+                ctx.fillRect(this.x + 4, this.y - this.height + 4, this.width - 8, this.height - 8);
+                let yOffset = 0;
+                if (this.animationFrame === 1) yOffset = -2;
+                if (this.animationFrame === 3) yOffset = 2;
+                ctx.fillStyle = '#ffffff';
+                const foamY = this.y - this.height + yOffset;
+                ctx.fillRect(this.x - 2, foamY, this.width + 4, 4);
+                ctx.fillRect(this.x + 2, foamY + 4, 4, 4);
+                ctx.fillRect(this.x + 10, foamY + 4, 4, 4);
+                ctx.fillRect(this.x + 22, foamY + 4, 4, 4);
+                ctx.fillRect(this.x + 35, foamY + 4, 4, 4);
+            }
+        });
+    }
+    
+    function handleObstacles() {
+        obstacleSpawnTimer++;
+        if (obstacleSpawnTimer > nextObstacleSpawn) {
+            createWaveObstacle();
+            obstacleSpawnTimer = 0;
+            nextObstacleSpawn = Math.random() * 80 + 100;
+        }
+
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+            let obs = obstacles[i];
+            obs.x -= gameSpeed;
+            if (obs.animationSpeed) {
+                obs.frameCount++;
+                if (obs.frameCount >= obs.animationSpeed) {
+                    obs.frameCount = 0;
+                    obs.animationFrame = (obs.animationFrame + 1) % obs.maxFrames;
+                }
+            }
+            obs.draw();
+            if (obs.x + obs.width < 0) {
+                obstacles.splice(i, 1);
+            }
+            if (
+                barge.x < obs.x + obs.width &&
+                barge.x + barge.width > obs.x &&
+                barge.y < obs.y &&
+                barge.y + barge.height > obs.y - obs.height
+            ) {
+               if (Math.floor(score) > highScore) {
+                    highScore = Math.floor(score);
+                    localStorage.setItem('jarediteBargeHighScore', highScore);
+               }
+               isGameOver = true;
+               messageEl.textContent = 'Game Over! Press Any Key to Restart';
+               messageEl.style.top = '50%';
+               messageEl.style.display = 'block';
+            }
+        }
+    }
+
+    const waves = Array.from({ length: 20 }, () => ({ x: Math.random() * canvas.width, y: 260 + Math.random() * 40, length: Math.random() * 50 + 20, speed: Math.random() * 0.5 + 0.2, opacity: Math.random() * 0.5 + 0.2 }));
+    const clouds = Array.from({ length: 5 }, () => ({ x: Math.random() * canvas.width, y: 50 + Math.random() * 80, length: Math.random() * 80 + 50, height: Math.random() * 10 + 10, speed: Math.random() * 0.3 + 0.1 }));
+    const rainDrops = Array.from({ length: 100 }, () => ({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, length: Math.random() * 15 + 5, speed: Math.random() * 4 + 3 }));
+
+    function drawBackground() {
+        const skyGradient = ctx.createLinearGradient(0, 0, 0, 250);
+        skyGradient.addColorStop(0, '#4a4e69');
+        skyGradient.addColorStop(1, '#6b708f');
+        ctx.fillStyle = skyGradient;
+        ctx.fillRect(0, 0, canvas.width, 250);
+
+        clouds.forEach(cloud => {
+            ctx.fillStyle = 'rgba(120, 120, 120, 0.7)';
+            ctx.fillRect(cloud.x, cloud.y, cloud.length, cloud.height);
+            ctx.fillRect(cloud.x + 20, cloud.y - 5, cloud.length - 40, cloud.height + 5);
+            cloud.x -= cloud.speed;
+            if (cloud.x + cloud.length < 0) { cloud.x = canvas.width; }
+        });
+        
+        ctx.fillStyle = '#22223b';
+        ctx.fillRect(0, 250, canvas.width, 50);
+        ctx.fillStyle = '#1b1b2f';
+        ctx.fillRect(0, 265, canvas.width, 35);
+        ctx.fillStyle = '#161a27';
+        ctx.fillRect(0, 280, canvas.width, 20);
+
+        waves.forEach(wave => {
+            ctx.fillStyle = `rgba(200, 200, 220, ${wave.opacity * 0.5})`;
+            ctx.fillRect(wave.x, wave.y, wave.length, 2);
+            wave.x -= wave.speed;
+            if (wave.x + wave.length < 0) { wave.x = canvas.width; }
+        });
+
+        ctx.fillStyle = 'rgba(173, 216, 230, 0.6)';
+        rainDrops.forEach(drop => {
+            ctx.fillRect(drop.x, drop.y, 2, drop.length);
+            drop.y += drop.speed;
+            drop.x -= drop.speed * 0.5;
+            if (drop.y > canvas.height) { drop.y = -drop.length; drop.x = Math.random() * canvas.width; }
+            if (drop.x < 0) { drop.y = -drop.length; drop.x = canvas.width; }
+        });
+    }
+
+    function drawScore() {
+        const scoreText = String(Math.floor(score)).padStart(5, '0');
+        const highScoreText = `HI ${String(highScore).padStart(5, '0')}`;
+        ctx.font = '20px "Courier New", Courier, monospace';
+        ctx.textAlign = 'right';
+        ctx.fillStyle = 'black';
+        ctx.fillText(highScoreText, canvas.width - 18, 32);
+        ctx.fillText(scoreText, canvas.width - 18, 57);
+        ctx.fillStyle = 'white';
+        ctx.fillText(highScoreText, canvas.width - 20, 30);
+        ctx.fillText(scoreText, canvas.width - 20, 55);
+    }
+
+    function drawTitleScreen() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBackground();
+        barge.draw();
+        drawScore();
+        ctx.font = '50px "Courier New", Courier, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'black';
+        ctx.fillText('Jaredite Barge', canvas.width / 2 + 3, 103);
+        ctx.fillText('Jumper', canvas.width / 2 + 3, 163);
+        ctx.fillStyle = 'white';
+        ctx.fillText('Jaredite Barge', canvas.width / 2, 100);
+        ctx.fillText('Jumper', canvas.width / 2, 160);
+        messageEl.textContent = 'Press Any Key or Tap to Start';
+        messageEl.style.top = '70%';
+        messageEl.style.display = 'block';
+    }
+
+    function resetGame() {
+        barge.y = 250 - barge.height;
+        barge.dy = 0;
+        barge.isJumping = false;
+        obstacles = [];
+        score = 0;
+        gameSpeed = 4;
+        isGameOver = false;
+        messageEl.style.display = 'none';
+    }
+
+    function animate() {
+        if (isTitleScreen) {
+            drawTitleScreen();
+        } else if (isGameOver) {
+            // Game over state is handled by collision detection, just stop updates
+        } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBackground();
+            barge.update();
+            handleObstacles();
+            drawScore();
+            score += 0.1;
+            gameSpeed += 0.001;
+        }
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    function handleInput() {
+        if (isTitleScreen) {
+            isTitleScreen = false;
+            resetGame();
+            return;
+        }
+        if (isGameOver) {
+            resetGame();
+        } else {
+            barge.jump();
+        }
+    }
+    
+    const handleKeyDown = (e) => {
+        if (e.code === 'Space' || e.code === 'ArrowUp') {
+            e.preventDefault();
+            handleInput();
+        }
+    };
+    const handleTouchStart = (e) => {
+        e.preventDefault();
+        handleInput();
+    };
+    
+    function resizeGame() {
+        const container = gameContainerRef.current;
+        if (!container || !canvas) return;
+
+        const aspectRatio = gameWidth / gameHeight;
+        const newWidth = container.clientWidth;
+        let newHeight = newWidth / aspectRatio;
+
+        if (newHeight > container.clientHeight) {
+            newHeight = container.clientHeight;
+            canvas.style.height = `${newHeight}px`;
+            canvas.style.width = `${newHeight * aspectRatio}px`;
+        } else {
+            canvas.style.width = `${newWidth}px`;
+            canvas.style.height = `${newHeight}px`;
+        }
+    }
+    
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('resize', resizeGame);
+    
+    resizeGame();
+    animate();
+
+    return () => {
+        cancelAnimationFrame(animationFrameId);
+        window.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('resize', resizeGame);
+    };
+  }, []);
+
+  return (
+    <div className="max-w-4xl mx-auto text-center">
+        <div className="mb-8">
+            <button
+              onClick={onBack}
+              className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg flex items-center mx-auto"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to Main Page
+            </button>
+        </div>
+
+        <div ref={gameContainerRef} className="relative w-[800px] h-[300px] max-w-[95vw] max-h-[80vh] mx-auto bg-[#0d1b2a]">
+            <canvas ref={canvasRef} className="border-4 border-black bg-[#415a77] max-w-full max-h-full mx-auto" style={{ imageRendering: 'pixelated', display: 'block' }} />
+            <div ref={messageRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-2xl text-center w-full pointer-events-none" style={{textShadow: '2px 2px #000', display: 'none'}}></div>
+        </div>
+    </div>
+  );
+};
+
 
 export default function SacramentApp() {
   const [speakerTopic, setSpeakerTopic] = useState('');
@@ -860,7 +1170,7 @@ export default function SacramentApp() {
           <p className="text-gray-700 mb-6 leading-relaxed">
             Engage with gospel-centered activities to enhance your Sabbath day worship.
           </p>
-          <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <button
               onClick={() => handleLinkOpen('https://comefollowmedle.com')}
               className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
@@ -872,6 +1182,12 @@ export default function SacramentApp() {
               className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
             >
               Sacrament Meeting Bingo
+            </button>
+            <button
+              onClick={() => setCurrentPage('jumper')}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+            >
+              Jaredite Jumper
             </button>
           </div>
         </div>
@@ -914,6 +1230,7 @@ export default function SacramentApp() {
       {currentPage === 'chastity' && <LawOfChastityPage onBack={() => setCurrentPage('main')} />}
       {currentPage === 'consecration' && <LawOfConsecrationPage onBack={() => setCurrentPage('main')} />}
       {currentPage === 'bingo' && <BingoPage onBack={() => setCurrentPage('main')} />}
+      {currentPage === 'jumper' && <JarediteJumperPage onBack={() => setCurrentPage('main')} />}
     </div>
   );
 }
